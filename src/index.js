@@ -20,10 +20,12 @@ function displayMatch(){
     let result = findMatch(currentText,cities);
     const html = result.map(place => {
         return `
+        <li class="information">
         <span class="name">
-        ${place.city},${place.state}
+        ${place.city}, ${place.state}
         </span>
-        <span class="population">${place.population}</span>
+        <span class="population">population : ${place.population}</span>
+        </li>
         `
     }).join('');
     infoBar.innerHTML = html;
