@@ -14,3 +14,23 @@ function findMatch(inputWords, cities){
         return place.city.match(regex) || place.state.match(regex);
     });
 };
+
+function displayMatch(){
+    let currentText = this.value;
+    let result = findMatch(currentText,cities);
+    const html = result.map(place => {
+        return `
+        <span class="name">
+        ${place.city},${place.state}
+        </span>
+        <span class="population">${place.population}</span>
+        `
+    }).join('');
+    infoBar.innerHTML = html;
+}
+
+function init(){
+    search.addEventListener('change',displayMatch);
+    search.addEventListener('keyup',displayMatch);
+}
+init();
